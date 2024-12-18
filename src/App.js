@@ -1,10 +1,10 @@
 import "./App.css";
-// import About from "./Components/About";
+import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import React, { useState, useEffect } from "react";
 import Alert from "./Components/Alert";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -41,32 +41,31 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
-      <Navbar
-        title="TextUtils"
-        aboutText="About TextUtils"
-        mode={mode}
-        toggleMode={toggleMode}
-        buttonText={buttonText}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        {/* <Routes> */}
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route */}
-        {/* path="/" */}
-        {/* element={ */}
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the Text to Analyze Below"
+      <Router basename="/">
+        <Navbar
+          title="TextUtils"
+          aboutText="About TextUtils"
           mode={mode}
+          toggleMode={toggleMode}
+          buttonText={buttonText}
         />
-        {/* } */}
-        {/* /> */}
-        {/* </Routes> */}
-      </div>
-      {/* {" "} */}
-      {/* </Router> */}
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Routes>
+            <Route path="/about" element={<About mode={mode} />} />
+            <Route
+              path="/"
+              element={
+                <TextForm
+                  showAlert={showAlert}
+                  heading="Enter the Text to Analyze Below"
+                  mode={mode}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

@@ -1,24 +1,17 @@
 import React from "react";
 
 export default function About(props) {
-  // const [myStyle, setMyStyle] = useState({
-  //     color: 'black',
-  //     backgroundColor: 'white'
-  // })
-  let myStyle = {
+  const myStyle = {
     color: props.mode === "dark" ? "white" : "#042743",
-    backgroundColor: props.mode === "dark" ? "rgb(36 74 104)" : "white",
+    backgroundColor: props.mode === "dark" ? "#162129" : "white",
   };
-
   return (
-    <div className="container">
-      <h1
-        className="my-3"
-        style={{ color: props.mode === "dark" ? "white" : "#042743" }}
-      >
+    <div className="container" style={myStyle}>
+      <h1 className="my-3" style={myStyle}>
         About Us
       </h1>
       <div className="accordion" id="accordionExample">
+        {/* Accordion Item 1 */}
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
@@ -41,7 +34,8 @@ export default function About(props) {
           >
             <div className="accordion-body" style={myStyle}>
               Textutils gives you a way to analyze your text quickly and
-              efficiently. Be it word count, character count or
+              efficiently. Be it word count, character count or space
+              optimization.
             </div>
           </div>
         </div>
